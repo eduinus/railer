@@ -309,20 +309,12 @@ end
 
 itemArray = {}
 	-- SLOT 1 FOR PICK (ideally infinipick)
-	itemArray[1] = {} itemArray[1][1] = 6 itemArray[1][2] = 2 itemArray[1][3] = 9 itemArray[1][4] = "stoneBrick" -- stone tesseract
-	itemArray[2] = {} itemArray[2][1] = 17 itemArray[2][2] = 3 itemArray[2][3] = 9 itemArray[2][4] = "stoneSlab" -- misc tesseract 1
-	itemArray[3] = {} itemArray[3][1] = 18 itemArray[3][2] = 3 itemArray[3][3] = 10 itemArray[3][4] = "torch" -- misc tesseract 2
-	itemArray[4] = {} itemArray[4][1] = 19 itemArray[4][2] = 3 itemArray[4][3] = 11 itemArray[4][4] = "plank" -- misc tesseract 3
-	itemArray[5] = {} itemArray[5][1] = 20 itemArray[5][2] = 3 itemArray[5][3] = 12 itemArray[5][4] = "plankSlab" -- misc tesseract 4
-	itemArray[6] = {} itemArray[6][1] = 21 itemArray[6][2] = 3 itemArray[6][3] = 13 itemArray[6][4] = "ironDoor" -- misc tesseract 5
-	itemArray[7] = {} itemArray[7][1] = 22 itemArray[7][2] = 3 itemArray[7][3] = 14 itemArray[7][4] = "ironWindow" -- misc tesseract 6 -frameless
-	itemArray[8] = {} itemArray[8][1] = 23 itemArray[8][2] = 3 itemArray[8][3] = 15 itemArray[8][4] = "button" -- misc tesseract 7
-	itemArray[9] = {} itemArray[9][1] = 24 itemArray[9][2] = 3 itemArray[9][3] = 16 itemArray[9][4] = "ladder" -- misc tesseract 8
-	-- NB SLOT 4 FOR COAL COKE OR OTHER FUEL TELE
-	itemArray[10] = {} itemArray[10][1] = 25 itemArray[10][2] = 5 itemArray[10][3] = 9 itemArray[10][4] = "log" -- misc 2 tesseract 1
-	itemArray[11] = {} itemArray[11][1] = 26 itemArray[11][2] = 5 itemArray[11][3] = 10 itemArray[11][4] = "sprucePlank" -- misc 2 tesseract 2
-	itemArray[12] = {} itemArray[12][1] = 27 itemArray[12][2] = 5 itemArray[12][3] = 11 itemArray[12][4] = "spruceFence" -- misc 2 tesseract 3
-	itemArray[13] = {} itemArray[13][1] = 28 itemArray[13][2] = 5 itemArray[13][3] = 12 itemArray[13][4] = "trapDoor" -- misc 2 tesseract 4
+	itemArray[2] = {} itemArray[2][1] = 4 itemArray[2][2] = 2 itemArray[2][3] = 9 itemArray[2][4] = "bricks" -- misc tesseract 1
+	itemArray[3] = {} itemArray[3][1] = 5 itemArray[3][2] = 2 itemArray[3][3] = 10 itemArray[3][4] = "smoothBricks" -- misc tesseract 2
+	itemArray[4] = {} itemArray[4][1] = 6 itemArray[4][2] = 2 itemArray[4][3] = 11 itemArray[4][4] = "torch" -- misc tesseract 3
+	itemArray[5] = {} itemArray[5][1] = 7 itemArray[5][2] = 2 itemArray[5][3] = 12 itemArray[5][4] = "glass" -- misc tesseract 4
+	itemArray[6] = {} itemArray[6][1] = 8 itemArray[6][2] = 2 itemArray[6][3] = 13 itemArray[6][4] = "rail" -- misc tesseract 5
+	-- NB SLOT 3 FOR FUEL AND TRASH TELE
 
 function place(blockName)
 	swung = false
