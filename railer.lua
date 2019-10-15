@@ -520,6 +520,22 @@ function placeDown(blockName)
 	return swung
 end
 
+function lampUp(it)
+	if it == then
+		
+	else
+		
+	end
+end
+
+function lampDown(it)
+	if it == then
+		
+	else
+		
+	end
+end
+
 -- Begin
 term.clear()
 print("Press space to confirm that robot is pointed to the right, facing where the right wall will go.")
@@ -550,7 +566,7 @@ print("Building...")
 
 for iterate=1, tunnelLength, 16 do
 	for spot=1, 16 do
-		0100101001010010
+	
 	end
 end
 
