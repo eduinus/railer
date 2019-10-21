@@ -520,25 +520,9 @@ function placeDown(blockName)
 	return swung
 end
 
-function lampUp(it)
-	if it == then
-		
-	else
-		
-	end
-end
-
-function lampDown(it)
-	if it == then
-		
-	else
-		
-	end
-end
-
 -- Begin
 term.clear()
-print("Press space to confirm that robot is pointed to the right, facing where the right wall will go.")
+print("Press space to confirm that robot is facing in the direction of the wall, on the block before the first iteration, on the rightmost side.")
 while not keyboard.isKeyDown(keyboard.keys.space) do os.sleep(0.1) end
 term.clear()
 
