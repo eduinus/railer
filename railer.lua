@@ -736,22 +736,27 @@ function endMidBitUp()
 			dig()
 		end
 	end
-	if lamp then
-		placeUp("lantern")
-	else
-		placeUp("smoothBricks")
-	end
+	placeUp("smoothBricks")
 	move()
-	if win then
-		placeUp("glass")
-	else
-		placeUp("bricks")
-	end
+	placeUp("smoothBricks")
 	robot.turnAround()
 end
 
 function endMidBitDown()
-	
+	placeUp("smoothBricks")
+	move()
+	placeUp("smoothBricks")
+	robot.turnAround()
+	for i=1, 4 do
+		moveDown()
+		if robot.detect() then
+			dig()
+		end
+	end
+	placeDown("smoothBricks")
+	move()
+	placeDown("smoothBricks")
+	robot.turnAround()
 end
 
 -- Begin
