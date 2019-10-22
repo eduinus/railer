@@ -635,7 +635,7 @@ function wallBitUp(win)
 		if win then
 			place("glass")
 		else
-			place("smoothBricks")
+			place("bricks")
 		end
 	end
 	moveUp()
@@ -651,7 +651,7 @@ function wallBitDown(win)
 		if win then
 			place("glass")
 		else
-			place("smoothBricks")
+			place("bricks")
 		end
 		moveDown()
 	end
@@ -659,7 +659,30 @@ function wallBitDown(win)
 	placeDown("bricks")
 end
 
-function midBitUp(win,lamp)
+function midBitUp(win,lamp) -- NOTE TO EDWIN, REPLACE SMOOTH ABOVE WITH NORMAL BRICKS AS NECESSARY
+	if win then
+		placeDown("glass")
+	else
+		placeDown("bricks")
+	end
+	move()
+	if lamp then
+		placeDown("lantern")
+	else
+		placeDown("smoothBricks")
+	end
+	robot.turnAround()
+end
+
+function midBitDown(win,lamp)
+	
+end
+
+function endMidBitUp()
+	
+end
+
+function endMidBitDown()
 	
 end
 
