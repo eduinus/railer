@@ -632,7 +632,11 @@ function wallBitUp(win)
 	place("smoothBricks")
 	for i=1, 2 do
 		moveUp()
-		place("smoothBricks")
+		if win then
+			place("glass")
+		else
+			place("smoothBricks")
+		end
 	end
 	moveUp()
 	place("smoothBricks")
