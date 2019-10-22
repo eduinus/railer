@@ -520,14 +520,149 @@ function placeDown(blockName)
 	return swung
 end
 
+function checkGlass -- moves robot into chunk, checks if it should be glassed
+	glass = true
+	for i=1, 2 do move() end
+	moveUp()
+	robot.turnRight()
+	move()
+	for checker=1, 7 do -- right window
+		if robot.detect() then glass = false end
+		moveUp()
+		if robot.detect() then glass = false end
+		robot.turnLeft()
+		move()
+		robot.turnRight()
+		if robot.detect() then glass = false end
+		moveDown()
+		if robot.detect() then glass = false end
+		if checker < 7 do
+			robot.turnLeft()
+			move()
+			robot.turnRight()
+		end
+	end
+	for i=1, 3 do moveBack() end
+	for i=1, 2 do moveDown() end
+	robot.turnAround()
+	for checker=1, 7 do -- bottom window
+		if robot.detectDown() then glass = false end
+		move()
+		if robot.detectDown() then glass = false end
+		robot.turnLeft()
+		move()
+		robot.turnRight()
+		if robot.detectDown() then glass = false end
+		moveBack()
+		if robot.detectDown() then glass = false end
+		if checker < 7 do
+			robot.turnLeft()
+			move()
+			robot.turnRight()
+		end
+	end
+	for i=1, 2 do moveUp() end
+	for i=1, 4 do move() end
+	for checker=1, 7 do -- left window
+		if robot.detect() then glass = false end
+		moveUp()
+		if robot.detect() then glass = false end
+		robot.turnRight()
+		move()
+		robot.turnLeft()
+		if robot.detect() then glass = false end
+		moveDown()
+		if robot.detect() then glass = false end
+		if checker < 7 do
+			robot.turnRight()
+			move()
+			robot.turnLeft()
+		end
+	end
+	robot.turnAround()
+	for i=1, 3 do move() end
+	for i=1, 4 do moveUp() end
+	for checker=1, 7 do -- top window
+		if robot.detectUp() then glass = false end
+		move()
+		if robot.detectUp() then glass = false end
+		robot.turnRight()
+		move()
+		robot.turnRight()
+		if robot.detectUp() then glass = false end
+		move()
+		if robot.detectUp() then glass = false end
+		if checker < 7 do
+			robot.turnLeft()
+			move()
+			robot.turnLeft()
+		end
+	end
+	robot.turnAround()
+	for i=1, 5 do moveDown() end
+	for i=1, 3 do move() end
+	robot.turnRight()
+	move()
+	robot.turnAround()
+	return glass
+end
+				
+function endBitUp()
+	placeDown("smoothBricks")
+	place("smoothBricks")
+	for i=1, 3 do
+		moveUp()
+		place("smoothBricks")
+	end
+	placeUp("smoothBricks")
+end
+
+function endBitDown()
+	placeUp("smoothBricks")
+	for i=1, 3 do
+		place("smoothBricks")
+		moveDown()
+	end
+	place("smoothBricks")
+	placeDown("smoothBricks")
+end
+
+function wallBitUp(win)
+	placeDown("bricks")
+	place("smoothBricks")
+	for i=1, 2 do
+		moveUp()
+		place("smoothBricks") -- GLASS??
+	end
+	moveUp()
+	place("smoothBricks")
+	placeUp("smoothBricks")
+end
+
+function wallBitDown(win)
+	placeUp("smoothBricks")
+	place("smoothBricks")
+	moveDown()
+	for i=1, 2 do
+		place("smoothBricks") -- GLASS?
+		moveDown()
+	end
+	place("smoothBricks")
+	placeDown("bricks")
+end
+
+function midBitUp(win,lamp)
+	
+end
+
 -- Begin
 term.clear()
 print("Press space to confirm that robot is facing in the direction of the wall, on the block before the first iteration, on the rightmost side.")
 while not keyboard.isKeyDown(keyboard.keys.space) do os.sleep(0.1) end
 term.clear()
 
-print("How many blocks do you want to build for?")
-tunnelLength = io.read()
+print("How many chunks do you want to build for?")
+tunnelLengthChunks = io.read()
 
 os.sleep(1)
 term.clear()
@@ -548,10 +683,13 @@ print("Building...")
 
 -- Begin walling sequence
 
-for iterate=1, tunnelLength, 16 do
-	for spot=1, 16 do
-	
+for iterate=1, tunnelLengthChunks do
+	if checkGlass() then 
+		windows = true
+	else
+		windows = false
 	end
+	
 end
 
 computer.shutdown()
