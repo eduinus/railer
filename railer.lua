@@ -659,7 +659,7 @@ function wallBitDown(win)
 	placeDown("bricks")
 end
 
-function midBitUp(win,lamp) -- NOTE TO EDWIN, REPLACE SMOOTH ABOVE WITH NORMAL BRICKS AS NECESSARY
+function midBitUp(win,lamp)
 	if win then
 		placeDown("glass")
 	else
@@ -672,14 +672,82 @@ function midBitUp(win,lamp) -- NOTE TO EDWIN, REPLACE SMOOTH ABOVE WITH NORMAL B
 		placeDown("smoothBricks")
 	end
 	robot.turnAround()
+	for i=1, 4 do
+		moveUp()
+		if robot.detect() then
+			dig()
+		end
+	end
+	if lamp then
+		placeUp("lantern")
+	else
+		placeUp("smoothBricks")
+	end
+	move()
+	if win then
+		placeUp("glass")
+	else
+		placeUp("bricks")
+	end
+	robot.turnAround()
 end
 
 function midBitDown(win,lamp)
-	
+	if win then
+		placeUp("glass")
+	else
+		placeUp("bricks")
+	end
+	move()
+	if lamp then
+		placeUp("lantern")
+	else
+		placeUp("smoothBricks")
+	end
+	robot.turnAround()
+	for i=1, 4 do
+		moveDown()
+		if robot.detect() then
+			dig()
+		end
+	end
+	if lamp then
+		placeDown("lantern")
+	else
+		placeDown("smoothBricks")
+	end
+	move()
+	if win then
+		placeDown("glass")
+	else
+		placeDown("bricks")
+	end
+	robot.turnAround()
 end
 
 function endMidBitUp()
-	
+	placeDown("smoothBricks")
+	move()
+	placeDown("smoothBricks")
+	robot.turnAround()
+	for i=1, 4 do
+		moveUp()
+		if robot.detect() then
+			dig()
+		end
+	end
+	if lamp then
+		placeUp("lantern")
+	else
+		placeUp("smoothBricks")
+	end
+	move()
+	if win then
+		placeUp("glass")
+	else
+		placeUp("bricks")
+	end
+	robot.turnAround()
 end
 
 function endMidBitDown()
