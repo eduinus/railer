@@ -309,11 +309,11 @@ end
 
 itemArray = {}
 	-- SLOT 1 FOR PICK (ideally infinipick)
-	itemArray[2] = {} itemArray[2][1] = 4 itemArray[2][2] = 2 itemArray[2][3] = 9 itemArray[2][4] = "bricks" -- misc tesseract 1
-	itemArray[3] = {} itemArray[3][1] = 5 itemArray[3][2] = 2 itemArray[3][3] = 10 itemArray[3][4] = "smoothBricks" -- misc tesseract 2
-	itemArray[4] = {} itemArray[4][1] = 6 itemArray[4][2] = 2 itemArray[4][3] = 11 itemArray[4][4] = "lantern" -- misc tesseract 3
-	itemArray[5] = {} itemArray[5][1] = 7 itemArray[5][2] = 2 itemArray[5][3] = 12 itemArray[5][4] = "glass" -- misc tesseract 4
-	itemArray[6] = {} itemArray[6][1] = 8 itemArray[6][2] = 2 itemArray[6][3] = 13 itemArray[6][4] = "rail" -- misc tesseract 5
+	itemArray[1] = {} itemArray[2][1] = 4 itemArray[2][2] = 2 itemArray[2][3] = 9 itemArray[2][4] = "bricks" -- misc tesseract 1
+	itemArray[2] = {} itemArray[3][1] = 5 itemArray[3][2] = 2 itemArray[3][3] = 10 itemArray[3][4] = "smoothBricks" -- misc tesseract 2
+	itemArray[3] = {} itemArray[4][1] = 6 itemArray[4][2] = 2 itemArray[4][3] = 11 itemArray[4][4] = "lantern" -- misc tesseract 3
+	itemArray[4] = {} itemArray[5][1] = 7 itemArray[5][2] = 2 itemArray[5][3] = 12 itemArray[5][4] = "glass" -- misc tesseract 4
+	itemArray[5] = {} itemArray[6][1] = 8 itemArray[6][2] = 2 itemArray[6][3] = 13 itemArray[6][4] = "rail" -- misc tesseract 5
 	-- NB SLOT 3 FOR FUEL AND TRASH TELE
 
 function place(blockName)
