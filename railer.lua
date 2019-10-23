@@ -800,6 +800,7 @@ print("Building...")
 
 for iterate=1, tunnelLengthChunks do
   rWindow, bWindow, lWindow, tWindow = checkGlass()
+  print("Chunk 1: ".."rWindow: "..tostring(rWindow).." ".."bWindow: "..tostring(bWindow).." ".."lWindow: "..tostring(lWindow).." ".."tWindow: "..tostring(tWindow))
   robot.turnRight()
 
   endBitUp()
