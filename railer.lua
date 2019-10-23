@@ -313,7 +313,6 @@ itemArray = {}
 	itemArray[2] = {} itemArray[2][1] = 5 itemArray[2][2] = 2 itemArray[2][3] = 10 itemArray[2][4] = "smoothBricks" -- misc tesseract 2
 	itemArray[3] = {} itemArray[3][1] = 6 itemArray[3][2] = 2 itemArray[3][3] = 11 itemArray[3][4] = "lantern" -- misc tesseract 3
 	itemArray[4] = {} itemArray[4][1] = 7 itemArray[4][2] = 2 itemArray[4][3] = 12 itemArray[4][4] = "glass" -- misc tesseract 4
-	itemArray[5] = {} itemArray[5][1] = 8 itemArray[5][2] = 2 itemArray[5][3] = 13 itemArray[5][4] = "fence" -- misc tesseract 5
 	-- NB SLOT 3 FOR FUEL AND TRASH TELE
 
 function place(blockName)
@@ -521,6 +520,7 @@ function placeDown(blockName)
 end
 
 function checkGlass() -- moves robot into chunk, checks if it should be glassed
+	move()
 	move()
 	moveUp()
 	robot.turnRight()
@@ -770,67 +770,6 @@ function light(test)
   end
 end
 
-function fence(glassBottom)
-	for fenceI=1, 15 do
-		moveBack()
-		if fenceI == 3 or fenceI == 4 or fenceI == 6 or fenceI == 7 or fenceI == 10 or fenceI == 11 or fenceI == 13 or fenceI == 14 then
-			place("fence")	
-		end
-	end
-		robot.turnRight()
-		moveBack()
-		place("fence")
-		moveBack()
-		if glassBottom then
-			moveBack()
-			place("fence")
-			moveBack()
-			place("fence")
-			moveBack()
-		else
-			robot.turnRight()
-			for i=1, 15 do
-				moveBack()
-				if fenceI == 1 or fenceI == 3 or fenceI == 4 or fenceI == 6 or fenceI == 7 or fenceI == 10 or fenceI == 11 or fenceI == 13 or fenceI == 14 then
-					place("fence")	
-				end
-			end
-			robot.turnLeft()
-			moveBack()
-			robot.turnLeft()
-			for i=1, 15 do
-				moveBack()
-				if fenceI == 1 or fenceI == 3 or fenceI == 4 or fenceI == 6 or fenceI == 7 or fenceI == 10 or fenceI == 11 or fenceI == 13 or fenceI == 14 then
-					place("fence")	
-				end
-			end
-			robot.turnRight()
-			moveBack()
-			place("fence")
-			moveBack()
-		end
-	robot.turnRight()
-	for fenceI=1, 15 do
-		moveBack()
-		if fenceI == 1 or fenceI == 3 or fenceI == 4 or fenceI == 6 or fenceI == 7 or fenceI == 10 or fenceI == 11 or fenceI == 13 or fenceI == 14 then
-			place("fence")	
-		end
-	end
-	robot.turnRight()
-	moveBack()
-	place("fence")
-	moveBack()
-	moveBack()
-	place("fence")
-	moveBack()
-	place("fence")
-	moveBack()
-	robot.turnLeft()
-	moveBack()
-	place("fence")
-	robot.turnAround()
-end
-
 -- Begin
 term.clear()
 print("Press space to confirm that robot is facing in the direction of the wall, on the block before the first iteration, on the rightmost side.")
@@ -859,7 +798,7 @@ print("Building...")
 
 -- Begin walling sequence
 
-move()
+
 for iterate=1, tunnelLengthChunks do
 	rWindow, bWindow, lWindow, tWindow = checkGlass()
 	print("Chunk 1: ".."rWindow: "..tostring(rWindow).." ".."bWindow: "..tostring(bWindow).." ".."lWindow: "..tostring(lWindow).." ".."tWindow: "..tostring(tWindow))
@@ -943,7 +882,6 @@ for iterate=1, tunnelLengthChunks do
   for i=1, 5 do move() end
   robot.turnLeft()
   for i=1, 15 do move() end
-  fence(bWindow)
 end
 
 computer.shutdown()
