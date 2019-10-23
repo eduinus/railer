@@ -521,21 +521,24 @@ function placeDown(blockName)
 end
 
 function checkGlass() -- moves robot into chunk, checks if it should be glassed
-	glass = true
+	rWGlass = true
+	bWGlass = true
+	lWGlass = true
+	tWGlass = true
 	for i=1, 2 do move() end
 	moveUp()
 	robot.turnRight()
 	move()
 	for checker=1, 7 do -- right window
-		if robot.detect() then glass = false end
+		if robot.detect() then rwGlass = false end
 		moveUp()
-		if robot.detect() then glass = false end
+		if robot.detect() then rWGlass = false end
 		robot.turnLeft()
 		move()
 		robot.turnRight()
-		if robot.detect() then glass = false end
+		if robot.detect() then rwGlass = false end
 		moveDown()
-		if robot.detect() then glass = false end
+		if robot.detect() then rwGlass = false end
 		if checker < 7 then
 			robot.turnLeft()
 			move()
@@ -546,15 +549,15 @@ function checkGlass() -- moves robot into chunk, checks if it should be glassed
 	for i=1, 2 do moveDown() end
 	robot.turnAround()
 	for checker=1, 7 do -- bottom window
-		if robot.detectDown() then glass = false end
+		if robot.detectDown() then bwGlass = false end
 		move()
-		if robot.detectDown() then glass = false end
+		if robot.detectDown() then bwGlass = false end
 		robot.turnLeft()
 		move()
 		robot.turnRight()
-		if robot.detectDown() then glass = false end
+		if robot.detectDown() then bwGlass = false end
 		moveBack()
-		if robot.detectDown() then glass = false end
+		if robot.detectDown() then bwGlass = false end
 		if checker < 7 then
 			robot.turnLeft()
 			move()
@@ -564,15 +567,15 @@ function checkGlass() -- moves robot into chunk, checks if it should be glassed
 	for i=1, 2 do moveUp() end
 	for i=1, 4 do move() end
 	for checker=1, 7 do -- left window
-		if robot.detect() then glass = false end
+		if robot.detect() then lwGlass = false end
 		moveUp()
-		if robot.detect() then glass = false end
+		if robot.detect() then lwGlass = false end
 		robot.turnRight()
 		move()
 		robot.turnLeft()
-		if robot.detect() then glass = false end
+		if robot.detect() then lwGlass = false end
 		moveDown()
-		if robot.detect() then glass = false end
+		if robot.detect() then lwGlass = false end
 		if checker < 7 then
 			robot.turnRight()
 			move()
@@ -583,15 +586,15 @@ function checkGlass() -- moves robot into chunk, checks if it should be glassed
 	for i=1, 3 do move() end
 	for i=1, 4 do moveUp() end
 	for checker=1, 7 do -- top window
-		if robot.detectUp() then glass = false end
+		if robot.detectUp() then twGlass = false end
 		move()
-		if robot.detectUp() then glass = false end
+		if robot.detectUp() then twGlass = false end
 		robot.turnRight()
 		move()
 		robot.turnRight()
-		if robot.detectUp() then glass = false end
+		if robot.detectUp() then twGlass = false end
 		move()
-		if robot.detectUp() then glass = false end
+		if robot.detectUp() then twGlass = false end
 		if checker < 7 then
 			robot.turnLeft()
 			move()
@@ -604,7 +607,7 @@ function checkGlass() -- moves robot into chunk, checks if it should be glassed
 	robot.turnRight()
 	move()
 	robot.turnAround()
-	return glass
+	return rWGlass,	bWGlass, lWGlass, tWGlass
 end
 
 function endBitUp()
@@ -659,8 +662,8 @@ function wallBitDown(win)
 	placeDown("bricks")
 end
 
-function midBitUp(win,lamp)
-	if win then
+function midBitUp(topWin, botWin, lamp)
+	if botWin then
 		placeDown("glass")
 	else
 		placeDown("bricks")
@@ -684,7 +687,7 @@ function midBitUp(win,lamp)
 		placeUp("smoothBricks")
 	end
 	move()
-	if win then
+	if topWin then
 		placeUp("glass")
 	else
 		placeUp("bricks")
@@ -692,8 +695,8 @@ function midBitUp(win,lamp)
 	robot.turnAround()
 end
 
-function midBitDown(win,lamp)
-	if win then
+function midBitDown(topWin, botWin, lamp)
+	if topWin then
 		placeUp("glass")
 	else
 		placeUp("bricks")
@@ -717,7 +720,7 @@ function midBitDown(win,lamp)
 		placeDown("smoothBricks")
 	end
 	move()
-	if win then
+	if botWin then
 		placeDown("glass")
 	else
 		placeDown("bricks")
@@ -796,7 +799,7 @@ print("Building...")
 -- Begin walling sequence
 
 for iterate=1, tunnelLengthChunks do
-	windows = checkGlass()
+  rWindow, bWindow, lWindow, tWindow = checkGlass()
   robot.turnRight()
 
   endBitUp()
@@ -804,11 +807,11 @@ for iterate=1, tunnelLengthChunks do
   move()
   robot.turnRight()
   for i=1, 7 do
-    wallBitDown(windows)
+    wallBitDown(rWindow)
     robot.turnLeft()
     move()
     robot.turnRight()
-    wallBitUp(windows)
+    wallBitUp(rWindow)
     robot.turnLeft()
     move()
     robot.turnRight()
@@ -822,12 +825,12 @@ for iterate=1, tunnelLengthChunks do
   robot.turnLeft()
   for aye=1, 14 do
     if aye % 2 ~= 0 then
-      midBitDown(windows,light(aye))
+      midBitDown(tWindow,bWindow,light(aye))
       robot.turnRight()
       move()
       robot.turnLeft()
     else
-      midBitUp(windows,light(aye))
+      midBitUp(tWindow,bWindow,light(aye))
       robot.turnRight()
       move()
       robot.turnLeft()
@@ -843,12 +846,12 @@ for iterate=1, tunnelLengthChunks do
   robot.turnLeft()
   for aye=1, 14 do
     if aye % 2 ~= 0 then
-      midBitDown(windows,light(aye))
+      midBitDown(tWindow,bWindow,light(aye))
       robot.turnRight()
       move()
       robot.turnLeft()
     else
-      midBitUp(windows,light(aye))
+      midBitUp(tWindow,bWindow,light(aye))
       robot.turnRight()
       move()
       robot.turnLeft()
@@ -862,11 +865,11 @@ for iterate=1, tunnelLengthChunks do
   move()
   robot.turnRight()
   for i=1, 7 do
-    wallBitDown(windows)
+    wallBitDown(lWindow)
     robot.turnLeft()
     move()
     robot.turnRight()
-    wallBitUp(windows)
+    wallBitUp(lWindow)
     robot.turnLeft()
     move()
     robot.turnRight()
