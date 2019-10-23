@@ -630,8 +630,12 @@ function endBitDown()
 	placeDown("smoothBricks")
 end
 
-function wallBitUp(win)
-	placeDown("bricks")
+function wallBitUp(win, lamp)
+	if lamp then
+		placeDown("lantern")
+	else
+		placeDown("smoothBricks")
+	end
 	place("smoothBricks")
 	for i=1, 2 do
 		moveUp()
@@ -646,7 +650,7 @@ function wallBitUp(win)
 	placeUp("smoothBricks")
 end
 
-function wallBitDown(win)
+function wallBitDown(win, lamp)
 	placeUp("smoothBricks")
 	place("smoothBricks")
 	moveDown()
@@ -659,7 +663,11 @@ function wallBitDown(win)
 		moveDown()
 	end
 	place("smoothBricks")
-	placeDown("bricks")
+	if lamp then
+		placeDown("lantern")
+	else
+		placeDown("smoothBricks")
+	end
 end
 
 function midBitUp(topWin, botWin, lamp)
@@ -669,11 +677,7 @@ function midBitUp(topWin, botWin, lamp)
 		placeDown("bricks")
 	end
 	move()
-	if lamp then
-		placeDown("lantern")
-	else
-		placeDown("smoothBricks")
-	end
+	placeDown("smoothBricks")
 	robot.turnAround()
 	for i=1, 4 do
 		moveUp()
@@ -714,11 +718,7 @@ function midBitDown(topWin, botWin, lamp)
 			dig()
 		end
 	end
-	if lamp then
-		placeDown("lantern")
-	else
-		placeDown("smoothBricks")
-	end
+	placeDown("smoothBricks")
 	move()
 	if botWin then
 		placeDown("glass")
@@ -809,11 +809,24 @@ for iterate=1, tunnelLengthChunks do
 	move()
 	robot.turnRight()
 	for i=1, 7 do
-    		wallBitDown(rWindow)
+    		if i == 1 or i == 6 then
+			first = true
+			second = false
+		elseif i == 2 or i == 7 then
+			first = flase
+			second = true
+		elseif i == 3 or i == 5 then
+			first = false
+			second = false
+		elseif i == 4 then
+			first = true
+			second = true
+		end
+		wallBitDown(rWindow,first)
     		robot.turnLeft()
     		move()
     		robot.turnRight()
-    		wallBitUp(rWindow)
+    		wallBitUp(rWindow,second)
     		robot.turnLeft()
     		move()
     		robot.turnRight()
@@ -867,11 +880,24 @@ for iterate=1, tunnelLengthChunks do
   move()
   robot.turnRight()
   for i=1, 7 do
-    wallBitDown(lWindow)
+    if i == 1 or i == 6 then
+		first = true
+		second = false
+	elseif i == 2 or i == 7 then
+		first = flase
+		second = true
+	elseif i == 3 or i == 5 then
+		first = false
+		second = false
+	elseif i == 4 then
+		first = true
+		second = true
+	end
+    wallBitDown(lWindow,first)
     robot.turnLeft()
     move()
     robot.turnRight()
-    wallBitUp(lWindow)
+    wallBitUp(lWindow,second)
     robot.turnLeft()
     move()
     robot.turnRight()
