@@ -874,7 +874,7 @@ for iterate=1, tunnelLengthChunks do
   endBitDown()
 
   robot.turnAround()
-  for i=1, 5 do move()
+  for i=1, 5 do move() end
   robot.turnLeft()
   for i=1, 15 do move() end
 end
