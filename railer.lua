@@ -52,7 +52,7 @@ function move()
 		end
 		print("Charged: "..computer.energy())
 	end
-	
+
 	while robot.forward() ~= true do end
   return swung
 end
@@ -124,7 +124,7 @@ function moveDown()
       robot.transferTo(invCount)
   	end
 	end
-	
+
 	if computer.energy() / computer.maxEnergy() <= 0.025 then
 		while computer.energy() / computer.maxEnergy() <= 0.975 do
 			if component.generator.count() < 1 then -- refuel
@@ -138,7 +138,7 @@ function moveDown()
 		end
 		print("Charged: "..computer.energy())
 	end
-	
+
 	while robot.down() ~= true do end
   return swung
 end
@@ -187,7 +187,7 @@ function moveBack()
 		end
 		print("Charged: "..computer.energy())
 	end
-    
+
 	if swung == true then
 		robot.turnAround()
 	    while robot.back() ~= true do end
@@ -372,13 +372,13 @@ function place(blockName)
 			robot.select(itemArray[blocki][1])
 		end
 	end
-	
+
 	if blockName == "ladder" then
 		if robot.place(3) == false then robot.place() end
 	else
 		if robot.place(0) == false then robot.place() end
 	end
-	
+
 	return swung
 end
 
@@ -606,7 +606,7 @@ function checkGlass -- moves robot into chunk, checks if it should be glassed
 	robot.turnAround()
 	return glass
 end
-				
+
 function endBitUp()
 	placeDown("smoothBricks")
 	place("smoothBricks")
@@ -759,6 +759,14 @@ function endMidBitDown()
 	robot.turnAround()
 end
 
+function light(test)
+  if test == 1 or test == 4 or test == 7 or test == 8 or test == 11 or test == 14 then
+    return true
+  else
+    return false
+  end
+end
+
 -- Begin
 term.clear()
 print("Press space to confirm that robot is facing in the direction of the wall, on the block before the first iteration, on the rightmost side.")
@@ -788,12 +796,87 @@ print("Building...")
 -- Begin walling sequence
 
 for iterate=1, tunnelLengthChunks do
-	if checkGlass() then 
-		windows = true
-	else
-		windows = false
-	end
-	
+	windows = checkGlass()
+  robot.turnRight()
+
+  endBitUp()
+  robot.turnLeft()
+  move()
+  robot.turnRight()
+  for i=1, 7 do
+    wallBitDown(windows)
+    robot.turnLeft()
+    move()
+    robot.turnRight()
+    wallBitUp(windows)
+    robot.turnLeft()
+    move()
+    robot.turnRight()
+  end
+  endBitDown()
+
+  for i=1, 2 do moveBack() end
+  endMidBitUp()
+  robot.turnRight()
+  move()
+  robot.turnLeft()
+  for aye=1, 14 do
+    if aye % 2 ~= 0 then
+      midBitDown(windows,light(aye))
+      robot.turnRight()
+      move()
+      robot.turnLeft()
+    else
+      midBitUp(windows,light(aye))
+      robot.turnRight()
+      move()
+      robot.turnLeft()
+    end
+  end
+  endMidBitDown()
+
+  robot.turnAround()
+  move()
+  endMidBitUp()
+  robot.turnRight()
+  move()
+  robot.turnLeft()
+  for aye=1, 14 do
+    if aye % 2 ~= 0 then
+      midBitDown(windows,light(aye))
+      robot.turnRight()
+      move()
+      robot.turnLeft()
+    else
+      midBitUp(windows,light(aye))
+      robot.turnRight()
+      move()
+      robot.turnLeft()
+    end
+  end
+  endMidBitDown()
+
+  for i=1, 2 do move() end
+  endBitUp()
+  robot.turnLeft()
+  move()
+  robot.turnRight()
+  for i=1, 7 do
+    wallBitDown(windows)
+    robot.turnLeft()
+    move()
+    robot.turnRight()
+    wallBitUp(windows)
+    robot.turnLeft()
+    move()
+    robot.turnRight()
+  end
+  endBitDown()
+
+  robot.turnAround()
+  for i=1, 5 do move()
+  robot.turnLeft()
+  for i=1, 15 do move() end
 end
 
 computer.shutdown()
