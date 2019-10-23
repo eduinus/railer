@@ -607,7 +607,7 @@ function checkGlass() -- moves robot into chunk, checks if it should be glassed
 	robot.turnRight()
 	move()
 	robot.turnAround()
-	return rWGlass,	bWGlass, lWGlass, tWGlass
+	return rwGlass,	bwGlass, lwGlass, twGlass
 end
 
 function endBitUp()
