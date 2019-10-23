@@ -521,7 +521,7 @@ function placeDown(blockName)
 end
 
 function checkGlass() -- moves robot into chunk, checks if it should be glassed
-	for i=1, 2 do move() end
+	move()
 	moveUp()
 	robot.turnRight()
 	move()
@@ -773,7 +773,7 @@ end
 function fence(glassBottom)
 	for fenceI=1, 15 do
 		moveBack()
-		if fenceI == 1 or fenceI == 3 or fenceI == 4 or fenceI == 6 or fenceI == 7 or fenceI == 10 or fenceI == 11 or fenceI == 13 or fenceI == 14 then
+		if fenceI == 3 or fenceI == 4 or fenceI == 6 or fenceI == 7 or fenceI == 10 or fenceI == 11 or fenceI == 13 or fenceI == 14 then
 			place("fence")	
 		end
 	end
@@ -825,7 +825,10 @@ function fence(glassBottom)
 	moveBack()
 	place("fence")
 	moveBack()
-	robot.turnRight()
+	robot.turnLeft()
+	moveBack()
+	place("fence")
+	robot.turnAround()
 end
 
 -- Begin
@@ -856,26 +859,27 @@ print("Building...")
 
 -- Begin walling sequence
 
+move()
 for iterate=1, tunnelLengthChunks do
-  rWindow, bWindow, lWindow, tWindow = checkGlass()
-  print("Chunk 1: ".."rWindow: "..tostring(rWindow).." ".."bWindow: "..tostring(bWindow).." ".."lWindow: "..tostring(lWindow).." ".."tWindow: "..tostring(tWindow))
-  robot.turnRight()
+	rWindow, bWindow, lWindow, tWindow = checkGlass()
+	print("Chunk 1: ".."rWindow: "..tostring(rWindow).." ".."bWindow: "..tostring(bWindow).." ".."lWindow: "..tostring(lWindow).." ".."tWindow: "..tostring(tWindow))
+	robot.turnRight()
 
-  endBitUp()
-  robot.turnLeft()
-  move()
-  robot.turnRight()
-  for i=1, 7 do
-    wallBitDown(rWindow)
-    robot.turnLeft()
-    move()
-    robot.turnRight()
-    wallBitUp(rWindow)
-    robot.turnLeft()
-    move()
-    robot.turnRight()
-  end
-  endBitDown()
+	endBitUp()
+	robot.turnLeft()
+	move()
+	robot.turnRight()
+	for i=1, 7 do
+    		wallBitDown(rWindow)
+    		robot.turnLeft()
+    		move()
+    		robot.turnRight()
+    		wallBitUp(rWindow)
+    		robot.turnLeft()
+    		move()
+    		robot.turnRight()
+  	end
+	endBitDown()
 
   for i=1, 2 do moveBack() end
   endMidBitUp()
