@@ -520,7 +520,7 @@ function placeDown(blockName)
 	return swung
 end
 
-function checkGlass -- moves robot into chunk, checks if it should be glassed
+function checkGlass() -- moves robot into chunk, checks if it should be glassed
 	glass = true
 	for i=1, 2 do move() end
 	moveUp()
