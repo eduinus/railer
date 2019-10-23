@@ -634,7 +634,7 @@ function wallBitUp(win, lamp)
 	if lamp then
 		placeDown("lantern")
 	else
-		placeDown("smoothBricks")
+		placeDown("bricks")
 	end
 	place("smoothBricks")
 	for i=1, 2 do
@@ -666,7 +666,7 @@ function wallBitDown(win, lamp)
 	if lamp then
 		placeDown("lantern")
 	else
-		placeDown("smoothBricks")
+		placeDown("bricks")
 	end
 end
 
