@@ -525,8 +525,8 @@ function checkGlass() -- moves robot into chunk, checks if it should be glassed
 	moveUp()
 	robot.turnRight()
 	move()
+	rwGlass = true
 	for checker=1, 7 do -- right window
-		rwGlass = true
 		if robot.detect() then rwGlass = false end
 		moveUp()
 		if robot.detect() then rWGlass = false end
@@ -545,8 +545,8 @@ function checkGlass() -- moves robot into chunk, checks if it should be glassed
 	for i=1, 3 do moveBack() end
 	for i=1, 2 do moveDown() end
 	robot.turnAround()
+	bwGlass = true
 	for checker=1, 7 do -- bottom window
-		bwGlass = true
 		if robot.detectDown() then bwGlass = false end
 		move()
 		if robot.detectDown() then bwGlass = false end
@@ -564,8 +564,8 @@ function checkGlass() -- moves robot into chunk, checks if it should be glassed
 	end
 	for i=1, 2 do moveUp() end
 	for i=1, 4 do move() end
+	lwGlass = true
 	for checker=1, 7 do -- left window
-		lwGlass = true
 		if robot.detect() then lwGlass = false end
 		moveUp()
 		if robot.detect() then lwGlass = false end
@@ -584,8 +584,8 @@ function checkGlass() -- moves robot into chunk, checks if it should be glassed
 	robot.turnAround()
 	for i=1, 3 do move() end
 	for i=1, 4 do moveUp() end
+	twGlass = true
 	for checker=1, 7 do -- top window
-		twGlass = true
 		if robot.detectUp() then twGlass = false end
 		move()
 		if robot.detectUp() then twGlass = false end
