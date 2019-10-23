@@ -773,7 +773,7 @@ end
 function fence(glassBottom)
 	for fenceI=1, 15 do
 		moveBack()
-		if fenceI == 1,3,4,6,7,10,11,13,14 then
+		if fenceI == 1 or fenceI == 3 or fenceI == 4 or fenceI == 6 or fenceI == 7 or fenceI == 10 or fenceI == 11 or fenceI == 13 or fenceI == 14 then
 			place("fence")	
 		end
 	end
@@ -791,7 +791,7 @@ function fence(glassBottom)
 			robot.turnRight()
 			for i=1, 15 do
 				moveBack()
-				if fenceI == 1,3,4,6,7,10,11,13,14 then
+				if fenceI == 1 or fenceI == 3 or fenceI == 4 or fenceI == 6 or fenceI == 7 or fenceI == 10 or fenceI == 11 or fenceI == 13 or fenceI == 14 then
 					place("fence")	
 				end
 			end
@@ -800,7 +800,7 @@ function fence(glassBottom)
 			robot.turnLeft()
 			for i=1, 15 do
 				moveBack()
-				if fenceI == 1,3,4,6,7,10,11,13,14 then
+				if fenceI == 1 or fenceI == 3 or fenceI == 4 or fenceI == 6 or fenceI == 7 or fenceI == 10 or fenceI == 11 or fenceI == 13 or fenceI == 14 then
 					place("fence")	
 				end
 			end
@@ -812,7 +812,7 @@ function fence(glassBottom)
 	robot.turnRight()
 	for fenceI=1, 15 do
 		moveBack()
-		if fenceI == 1,3,4,6,7,10,11,13,14 then
+		if fenceI == 1 or fenceI == 3 or fenceI == 4 or fenceI == 6 or fenceI == 7 or fenceI == 10 or fenceI == 11 or fenceI == 13 or fenceI == 14 then
 			place("fence")	
 		end
 	end
