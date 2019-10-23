@@ -566,15 +566,15 @@ function checkGlass() -- moves robot into chunk, checks if it should be glassed
 	for i=1, 4 do move() end
 	for checker=1, 7 do -- left window
 		lwGlass = true
-		if robot.detect() then lwGlass = false print(lwGlass) end
+		if robot.detect() then lwGlass = false end
 		moveUp()
-		if robot.detect() then lwGlass = false print(lwGlass) end
+		if robot.detect() then lwGlass = false end
 		robot.turnRight()
 		move()
 		robot.turnLeft()
-		if robot.detect() then lwGlass = false print(lwGlass) end
+		if robot.detect() then lwGlass = false end
 		moveDown()
-		if robot.detect() then lwGlass = false print(lwGlass) end
+		if robot.detect() then lwGlass = false end
 		if checker < 7 then
 			robot.turnRight()
 			move()
@@ -586,15 +586,15 @@ function checkGlass() -- moves robot into chunk, checks if it should be glassed
 	for i=1, 4 do moveUp() end
 	for checker=1, 7 do -- top window
 		twGlass = true
-		if robot.detectUp() then twGlass = false print(twGlass) end
+		if robot.detectUp() then twGlass = false end
 		move()
-		if robot.detectUp() then twGlass = false print(twGlass) end
+		if robot.detectUp() then twGlass = false end
 		robot.turnRight()
 		move()
 		robot.turnRight()
-		if robot.detectUp() then twGlass = false print(twGlass) end
+		if robot.detectUp() then twGlass = false end
 		move()
-		if robot.detectUp() then twGlass = false print(twGlass) end
+		if robot.detectUp() then twGlass = false end
 		if checker < 7 then
 			robot.turnLeft()
 			move()
