@@ -23,7 +23,7 @@ function move()
   	if component.inventory_controller.getStackInInternalSlot(1) ~= nil then
       robot.select(1)
       while component.inventory_controller.getStackInInternalSlot(invCount) ~= nil and (robot.compareTo(invCount) == false or component.inventory_controller.getStackInInternalSlot(invCount).size == component.inventory_controller.getStackInInternalSlot(invCount).maxSize) do
-  	    if invCount == itemArray[tableLength(itemArray)][1]+16 then
+  	    if invCount == itemArray[tableLength(itemArray)][1]+20 then
   	      robot.select(3) robot.place()
   	        for x=itemArray[tableLength(itemArray)][1]+1, robot.inventorySize() do
   	          robot.select(x)
@@ -66,7 +66,7 @@ function moveUp()
   	if component.inventory_controller.getStackInInternalSlot(1) ~= nil then
       robot.select(1)
       while component.inventory_controller.getStackInInternalSlot(invCount) ~= nil and (robot.compareTo(invCount) == false or component.inventory_controller.getStackInInternalSlot(invCount).size == component.inventory_controller.getStackInInternalSlot(invCount).maxSize) do
-  	    if invCount == itemArray[tableLength(itemArray)][1]+16 then
+  	    if invCount == itemArray[tableLength(itemArray)][1]+20 then
   	      robot.select(3) robot.placeUp()
   	        for x=itemArray[tableLength(itemArray)][1]+1, robot.inventorySize() do
   	          robot.select(x)
@@ -109,7 +109,7 @@ function moveDown()
   	if component.inventory_controller.getStackInInternalSlot(1) ~= nil then
       robot.select(1)
       while component.inventory_controller.getStackInInternalSlot(invCount) ~= nil and (robot.compareTo(invCount) == false or component.inventory_controller.getStackInInternalSlot(invCount).size == component.inventory_controller.getStackInInternalSlot(invCount).maxSize) do
-  	    if invCount == itemArray[tableLength(itemArray)][1]+16 then
+  	    if invCount == itemArray[tableLength(itemArray)][1]+20 then
   	      robot.select(3) robot.placeDown()
   	        for x=itemArray[tableLength(itemArray)][1]+1, robot.inventorySize() do
   	          robot.select(x)
@@ -156,7 +156,7 @@ function moveBack()
     	if component.inventory_controller.getStackInInternalSlot(1) ~= nil then
     		robot.select(1)
     		while component.inventory_controller.getStackInInternalSlot(invCount) ~= nil and (robot.compareTo(invCount) == false or component.inventory_controller.getStackInInternalSlot(invCount).size == component.inventory_controller.getStackInInternalSlot(invCount).maxSize) do
-    			if invCount == itemArray[tableLength(itemArray)][1]+16 then
+    			if invCount == itemArray[tableLength(itemArray)][1]+20 then
     				robot.select(3) robot.place()
     				for x=itemArray[tableLength(itemArray)][1]+1, robot.inventorySize() do
     					robot.select(x)
@@ -201,7 +201,7 @@ function dig()
   	invCount = robot.inventorySize() -- check if need to dump garbage
   	if component.inventory_controller.getStackInInternalSlot(1) ~= nil then
       while component.inventory_controller.getStackInInternalSlot(invCount) ~= nil and (robot.compareTo(invCount) == false or component.inventory_controller.getStackInInternalSlot(invCount).size == component.inventory_controller.getStackInInternalSlot(invCount).maxSize) do
-  	    if invCount == itemArray[tableLength(itemArray)][1]+16 then
+  	    if invCount == itemArray[tableLength(itemArray)][1]+20 then
   	      robot.select(3) robot.place()
   	        for x=itemArray[tableLength(itemArray)][1]+1, robot.inventorySize() do
   	          robot.select(x)
@@ -239,7 +239,7 @@ function digDown()
   	invCount = robot.inventorySize() -- check if need to dump garbage
   	if component.inventory_controller.getStackInInternalSlot(1) ~= nil then
       while component.inventory_controller.getStackInInternalSlot(invCount) ~= nil and (robot.compareTo(invCount) == false or component.inventory_controller.getStackInInternalSlot(invCount).size == component.inventory_controller.getStackInInternalSlot(invCount).maxSize) do
-  	    if invCount == itemArray[tableLength(itemArray)][1]+16 then
+  	    if invCount == itemArray[tableLength(itemArray)][1]+20 then
   	      robot.select(3) robot.placeDown()
   	        for x=itemArray[tableLength(itemArray)][1]+1, robot.inventorySize() do
   	          robot.select(x)
@@ -276,7 +276,7 @@ function digUp()
   	invCount = robot.inventorySize() -- check if need to dump garbage
   	if component.inventory_controller.getStackInInternalSlot(1) ~= nil then
       while component.inventory_controller.getStackInInternalSlot(invCount) ~= nil and (robot.compareTo(invCount) == false or component.inventory_controller.getStackInInternalSlot(invCount).size == component.inventory_controller.getStackInInternalSlot(invCount).maxSize) do
-  	    if invCount == itemArray[tableLength(itemArray)][1]+16 then
+  	    if invCount == itemArray[tableLength(itemArray)][1]+20 then
   	      robot.select(3) robot.placeUp()
   	        for x=itemArray[tableLength(itemArray)][1]+1, robot.inventorySize() do
   	          robot.select(x)
@@ -323,7 +323,7 @@ function place(blockName)
   	invCount = robot.inventorySize() -- check if need to dump garbage
   	if component.inventory_controller.getStackInInternalSlot(1) ~= nil then
       while component.inventory_controller.getStackInInternalSlot(invCount) ~= nil and (robot.compareTo(invCount) == false or component.inventory_controller.getStackInInternalSlot(invCount).size == component.inventory_controller.getStackInInternalSlot(invCount).maxSize) do
-  	    if invCount == itemArray[tableLength(itemArray)][1]+16 then
+  	    if invCount == itemArray[tableLength(itemArray)][1]+20 then
   	      robot.select(3) robot.place()
   	        for x=itemArray[tableLength(itemArray)][1]+1, robot.inventorySize() do
   	          robot.select(x)
@@ -389,7 +389,7 @@ function placeUp(blockName)
   	invCount = robot.inventorySize() -- check if need to dump garbage
   	if component.inventory_controller.getStackInInternalSlot(1) ~= nil then
       while component.inventory_controller.getStackInInternalSlot(invCount) ~= nil and (robot.compareTo(invCount) == false or component.inventory_controller.getStackInInternalSlot(invCount).size == component.inventory_controller.getStackInInternalSlot(invCount).maxSize) do
-  	    if invCount == itemArray[tableLength(itemArray)][1]+16 then
+  	    if invCount == itemArray[tableLength(itemArray)][1]+20 then
   	      robot.select(3) robot.placeUp()
   	        for x=itemArray[tableLength(itemArray)][1]+1, robot.inventorySize() do
   	          robot.select(x)
@@ -449,7 +449,7 @@ function placeDown(blockName)
   	invCount = robot.inventorySize() -- check if need to dump garbage
   	if component.inventory_controller.getStackInInternalSlot(1) ~= nil then
       while component.inventory_controller.getStackInInternalSlot(invCount) ~= nil and (robot.compareTo(invCount) == false or component.inventory_controller.getStackInInternalSlot(invCount).size == component.inventory_controller.getStackInInternalSlot(invCount).maxSize) do
-  	    if invCount == itemArray[tableLength(itemArray)][1]+16 then
+  	    if invCount == itemArray[tableLength(itemArray)][1]+20 then
   	      robot.select(3) robot.placeDown()
   	        for x=itemArray[tableLength(itemArray)][1]+1, robot.inventorySize() do
   	          robot.select(x)
