@@ -1,4 +1,2 @@
 # railer
-This program creates nether rail tunnels! 
-
-Use ender io to disable pigmen etc. spawning.
+Creates rail tubes, originally in the Nether
